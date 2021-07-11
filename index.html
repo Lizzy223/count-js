@@ -124,42 +124,51 @@
                 <h2 class="text-light text-center">
                     Counter
                 </h2>
-                <p class="text-size text-center text-green" id="demo"></p>
+                <p class="text-size text-center text-green counter-display" id="demo"></p>
                 <div class="btns">
-                    <button class="m-auto text-center shadow bg-blue btn" onclick="sub()">Lower Count</button>
+                    <button class="m-auto text-center shadow bg-blue btn counter-minus" onclick="sub()">Lower Count</button>
                  
                 </div>
                 <div class="btns mt-5">
                    
-                    <button class="m-auto btn bg-blue shadow" onclick="add" id="id">Add Count</button>
+                    <button class="m-auto btn bg-blue shadow counter-plus" onclick="add" id="id">Add Count</button>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        function sub() {
-            // let count = document.getElementsByClassName('text-size');
-            
-            while ( i <= 50) {
-               console.log(i++);
-               count += i;
-                count++;
-               document.getElementsByTagName('p').innerHTML = count;
+        let counterDisplayElem = document.querySelector('.counter-display');
+        let counterMinusElem = document.querySelector('.counter-minus');
+        let counterPlusElem = document.querySelector('.counter-plus');
+
+        let count = 0;
+
+        updateDisplay();
+
+        counterPlusElem.addEventListener("click",()=>{
+            while (  count < 50) {
+            count++;
+            updateDisplay(); break;}
+        }) ;
+
+        counterMinusElem.addEventListener("click",()=>{
+            while (  count > 0) {
+                count--;
+            updateDisplay();break;
             }
-        }
-        function() {
-           
-            let count ='';
-            let i =0;
-             while ( i <= 50) {
-               console.log(i++);
-               count += i;
-                count++;
-               document.getElementsById('demo').innerHTML = count;
-            }
-            document.write(count);
             
-        }
+        });
+
+        function updateDisplay(){
+            counterDisplayElem.innerHTML = count;
+        };
+
+
+
+
+
+
+        
     </script>
 </body>
 </html>
